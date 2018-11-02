@@ -56,7 +56,7 @@ public class Cubo : MonoBehaviour {
 
                 for(int k = 0; k < dimensoes.z; k++) {
                     GameObject box = (GameObject) Instantiate(tilePrefab, transform.position + offset, transform.rotation, transform);
-                    matrizCaixas[i][j][k] = box.GetComponent<Caixa>();
+                    matrizCaixas[i][j][k] = box.GetComponentInChildren<Caixa>();
                     matrizCaixas[i][j][k].posicao = new Vector3Int (i, j, k);
                     //matrizCaixas[i][j][k].gameObject.transform.SetParent(transform);
                     offset.z += distanceBetweenTiles;

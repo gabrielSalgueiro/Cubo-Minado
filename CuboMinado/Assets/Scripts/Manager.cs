@@ -18,7 +18,6 @@ public class Manager : MonoBehaviour {
 
 	void Awake () {
 		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
-		dificuldade = 0;
         cubo.dimensoes = dimensaoDificuldade [dificuldade];
 		cubo.CriaCaixas ();
 		GerarMatriz (bombasDificuldade [dificuldade]);

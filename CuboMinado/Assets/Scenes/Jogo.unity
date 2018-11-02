@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 679930048}
   - component: {fileID: 679930047}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e047a57cd3662b74aab673c74879b4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dificuldade: 0
+  dificuldade: 3
 --- !u!4 &679930048
 Transform:
   m_ObjectHideFlags: 0
@@ -401,10 +401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ad36b4d1dca1448de38248b3939df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensoes: {x: 3, y: 3, z: 3}
+  dimensoes: {x: 10, y: 10, z: 10}
   rotSpeed: 0.2
-  distanceBetweenTiles: 1.1
-  tilePrefab: {fileID: 1076643096025936, guid: eee2abef0e358d84e92377df7725f0e7, type: 2}
+  distanceBetweenTiles: 2.5
+  tilePrefab: {fileID: 1118185839072272, guid: eee2abef0e358d84e92377df7725f0e7, type: 2}
 --- !u!4 &1940260164
 Transform:
   m_ObjectHideFlags: 0

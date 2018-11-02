@@ -22,7 +22,9 @@ public class Caixa : MonoBehaviour {
 	public bool realce { get; set; }
 	public bool isBomb { get; private set; }
 
-    public Material verd, verm, azul;
+    public Material Normal, Marcada;
+    private Animator anim;
+    private SkinnedMeshRenderer SMR;
 
     // Use this for initialization
     void Start () {
@@ -31,7 +33,9 @@ public class Caixa : MonoBehaviour {
         aberta = false;
         realce = false;
 		isBomb = false;
-        GetComponent<MeshRenderer>().material = verd;
+        anim = GetComponent<Animator>();
+        SMR = GetComponent<SkinnedMeshRenderer>();
+        SMR.material = Normal;
     }
 
 	void Update () {
@@ -40,24 +44,24 @@ public class Caixa : MonoBehaviour {
 
     public void AbrirCaixa() {
         Debug.Log(_adjBomb);
+        anim.SetTrigger("AbreCaixa");
         if(isBomb){
             Debug.Log("KABUUUUM - Perdeu Vacilao");
         }
         else{
             aberta = true;
             gameObject.layer = 9;
-            GetComponent<MeshRenderer>().material = azul;
         }
     }
 
     public void MarcarCaixa() {
         if(marcada == 0) {
             marcada = 1;
-            GetComponent<MeshRenderer>().material = verm;
+            SMR.material = Marcada;
         }
         else if(marcada == 1) {
             marcada = 0;
-            GetComponent<MeshRenderer>().material = verd;
+            SMR.material = Normal;
         }
 
     }
