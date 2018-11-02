@@ -1,1 +1,1 @@
-Cubo-Minado
+Cubo Minado
