@@ -23,7 +23,7 @@ public class Caixa : MonoBehaviour {
 	public bool realce { get; set; }
 	public bool isBomb { get; private set; }
 
-    public Material Normal, Marcada;
+    public Material Normal, Marcada, Sumida;
     private Animator anim;
     private SkinnedMeshRenderer SMR;
     public List<Sprite> Numbers;
@@ -31,7 +31,7 @@ public class Caixa : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        bombasAdjacentes = 7;
+        bombasAdjacentes = 26;
         marcada = 0;
         aberta = false;
         realce = false;
@@ -43,13 +43,13 @@ public class Caixa : MonoBehaviour {
     }
 
 	void Update () {
-        if (!isBomb) img.sprite = Numbers[_adjBomb-1];
+        
 	}
 
     public void AbrirCaixa() {
         Debug.Log(_adjBomb);
         anim.SetTrigger("AbreCaixa");
-        Invoke("SUMIU", 2f);
+        Invoke("SUMIU", .65f);
         if(isBomb){
             Debug.Log("KABUUUUM - Perdeu Vacilao");
         }
@@ -83,6 +83,10 @@ public class Caixa : MonoBehaviour {
     }
 
     private void SUMIU(){
-        SMR.enabled = false;
+        SMR.material = Sumida;
+        if (!isBomb) {
+            img.sprite = Numbers[_adjBomb-1];
+            img.enabled = true;
+        }
     }
 }
