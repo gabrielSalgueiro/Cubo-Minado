@@ -405,7 +405,7 @@ MonoBehaviour:
   dimensoes: {x: 3, y: 3, z: 3}
   rotSpeed: 0.2
   distanceBetweenTiles: 2.5
-  tilePrefab: {fileID: 1118185839072272, guid: eee2abef0e358d84e92377df7725f0e7, type: 2}
+  tilePrefab: {fileID: 1749241450069992, guid: 5e1100adffd22464f98c5e37ca5b0108, type: 2}
 --- !u!4 &1940260164
 Transform:
   m_ObjectHideFlags: 0

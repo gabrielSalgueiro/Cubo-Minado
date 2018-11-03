@@ -30,6 +30,7 @@ public class Caixa : MonoBehaviour {
     private SkinnedMeshRenderer SMR;
     public List<Sprite> Numbers;
     private Image img;
+    public Mina mina;
 
     void Awake () {
         bombasAdjacentes = 1;
@@ -60,6 +61,7 @@ public class Caixa : MonoBehaviour {
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
         if(isBomb){
+            Invoke("IXPRUDIU", .65f);
             manager.AbriuBomba();
         }
         else{
@@ -97,5 +99,9 @@ public class Caixa : MonoBehaviour {
             img.sprite = Numbers[_adjBomb-1];
             img.enabled = true;
         }
+    }
+
+    private void IXPRUDIU(){
+        mina.gameObject.SetActive(true);
     }
 }

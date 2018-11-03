@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Cubo.cs" />
      <Compile Include="Assets\Scripts\Manager.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\Mina.cs" />
      <Compile Include="Assets\Scripts\NumberRot.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\RayCast.cs" />
