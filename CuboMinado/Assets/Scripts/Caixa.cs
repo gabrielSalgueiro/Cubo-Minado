@@ -28,6 +28,7 @@ public class Caixa : MonoBehaviour {
     private SkinnedMeshRenderer SMR;
     public List<Sprite> Numbers;
     private Image img;
+    public Mina mina;
 
     // Use this for initialization
     void Start () {
@@ -35,7 +36,7 @@ public class Caixa : MonoBehaviour {
         marcada = 0;
         aberta = false;
         realce = false;
-		isBomb = false;
+		isBomb = true;
         anim = GetComponent<Animator>();
         SMR = GetComponent<SkinnedMeshRenderer>();
         SMR.material = Normal;
@@ -51,7 +52,7 @@ public class Caixa : MonoBehaviour {
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
         if(isBomb){
-            Debug.Log("KABUUUUM - Perdeu Vacilao");
+            Invoke("IXPRUDIU", .65f);
         }
         else{
             aberta = true;
@@ -88,5 +89,9 @@ public class Caixa : MonoBehaviour {
             img.sprite = Numbers[_adjBomb-1];
             img.enabled = true;
         }
+    }
+
+    private void IXPRUDIU(){
+        mina.gameObject.SetActive(true);
     }
 }
