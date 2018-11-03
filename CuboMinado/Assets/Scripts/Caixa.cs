@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Caixa : MonoBehaviour {
 
@@ -25,10 +26,12 @@ public class Caixa : MonoBehaviour {
     public Material Normal, Marcada;
     private Animator anim;
     private SkinnedMeshRenderer SMR;
+    public List<Sprite> Numbers;
+    private Image img;
 
     // Use this for initialization
     void Start () {
-        bombasAdjacentes = 0;
+        bombasAdjacentes = 7;
         marcada = 0;
         aberta = false;
         realce = false;
@@ -36,15 +39,17 @@ public class Caixa : MonoBehaviour {
         anim = GetComponent<Animator>();
         SMR = GetComponent<SkinnedMeshRenderer>();
         SMR.material = Normal;
+        img = GetComponentInChildren<Image>();
     }
 
 	void Update () {
-        
+        if (!isBomb) img.sprite = Numbers[_adjBomb-1];
 	}
 
     public void AbrirCaixa() {
         Debug.Log(_adjBomb);
         anim.SetTrigger("AbreCaixa");
+        Invoke("SUMIU", 2f);
         if(isBomb){
             Debug.Log("KABUUUUM - Perdeu Vacilao");
         }
@@ -75,5 +80,9 @@ public class Caixa : MonoBehaviour {
 
     public void SetRealce() {
 
+    }
+
+    private void SUMIU(){
+        SMR.enabled = false;
     }
 }
