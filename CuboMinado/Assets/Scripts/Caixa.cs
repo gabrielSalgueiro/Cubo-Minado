@@ -33,7 +33,7 @@ public class Caixa : MonoBehaviour {
     public Mina mina;
 
     void Awake () {
-        bombasAdjacentes = 1;
+        bombasAdjacentes = 0;
         isBomb = false;
         if(manager == null){
             manager = GameObject.Find("Manager").GetComponent<Manager> ();
@@ -95,7 +95,7 @@ public class Caixa : MonoBehaviour {
 
     private void SUMIU(){
         SMR.material = Sumida;
-        if (!isBomb) {
+        if (!isBomb && _adjBomb > 0) {
             img.sprite = Numbers[_adjBomb-1];
             img.enabled = true;
         }
