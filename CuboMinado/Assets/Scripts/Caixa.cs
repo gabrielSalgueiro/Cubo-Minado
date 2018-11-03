@@ -17,6 +17,8 @@ public class Caixa : MonoBehaviour {
 		}
 	}
     private static Cubo cubo;
+    //[SerializeField]
+    public static Manager manager;
     private int powerUp;
     public int marcada { get; set; }
 	public bool aberta { get; set; }
@@ -29,13 +31,20 @@ public class Caixa : MonoBehaviour {
     public List<Sprite> Numbers;
     private Image img;
 
-    // Use this for initialization
+    void Awake () {
+        bombasAdjacentes = 1;
+        isBomb = false;
+        if(manager == null){
+            manager = GameObject.Find("Manager").GetComponent<Manager> ();
+            Debug.Log("FINDO");
+        }
+    }
+    
+    
     void Start () {
-        bombasAdjacentes = 26;
         marcada = 0;
         aberta = false;
         realce = false;
-		isBomb = false;
         anim = GetComponent<Animator>();
         SMR = GetComponent<SkinnedMeshRenderer>();
         SMR.material = Normal;
@@ -47,11 +56,11 @@ public class Caixa : MonoBehaviour {
 	}
 
     public void AbrirCaixa() {
-        Debug.Log(_adjBomb);
+        Debug.Log(_adjBomb + " " + isBomb);
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
         if(isBomb){
-            Debug.Log("KABUUUUM - Perdeu Vacilao");
+            manager.AbriuBomba();
         }
         else{
             aberta = true;
@@ -68,14 +77,14 @@ public class Caixa : MonoBehaviour {
             marcada = 0;
             SMR.material = Normal;
         }
-
-    }
-
-    public int GetMarcada(){
-        return marcada;
+        
+        if(!isBomb){
+            manager.MarcouCaixa();
+        }
     }
 
     public void RequestRealce() {
+
     }
 
     public void SetRealce() {

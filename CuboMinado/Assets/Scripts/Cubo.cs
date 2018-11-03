@@ -22,26 +22,6 @@ public class Cubo : MonoBehaviour {
 		Rotaciona();
 	}
 
-    /*public void SetDimensoes(Vector3 dim) {
-        dimensoes = dim;
-    }
-
-    public void SetNMinas(int n) {
-        nMinas = n;
-    }
-
-    public void SetNCaixas(int n) {
-         nCaixasR = n;
-    }
-
-    public void SetNCaixasMarcadas(int n) {
-        nCaixasMarcadas = n;
-    }
-
-    public int GetNMinas() {
-        return nMinas;
-    }*/
-
     public void CriaCaixas() {
         Vector3 init = -(dimensoes - new Vector3(1,1,1))*distanceBetweenTiles/2;
         Vector3 offset = init;
@@ -92,18 +72,19 @@ public class Cubo : MonoBehaviour {
 					// pos é uma possível posição adjacente àquela referente
 					pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
 
-					// Caso todos sejam 0, a posição é igual à referente, então continua (deseja atualizar apenas posições adjacentes)
+					/*// Caso todos sejam 0, a posição é igual à referente, então continua (deseja atualizar apenas posições adjacentes)
 					if (i == j && j == k && k == 0)
 						continue;
-
+                    */
 					// Confere se a nova posição é válida, checando se está dentro das dimensões do cubo
 					if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
 						// Confere se a caixa não possui bomba, pois não faria sentido atualizar o valor de uma bomba, mas sim dos números
 						if (!matrizCaixas [pos.x] [pos.y] [pos.z].isBomb) {
-							// Caso esteja diminuindo as bombas e o número de bombas desta caixa já seja zero, não diminui mais
+							/*// Caso esteja diminuindo as bombas e o número de bombas desta caixa já seja zero, não diminui mais
 							if (n < 0 && matrizCaixas [pos.x] [pos.y] [pos.z].bombasAdjacentes <= 0)
 								continue;
-							matrizCaixas [pos.x] [pos.y] [pos.z].bombasAdjacentes += n;	// Finalmente atualiza as bombas adjacentes :D
+							*/
+                            matrizCaixas [pos.x] [pos.y] [pos.z].bombasAdjacentes += n;	// Finalmente atualiza as bombas adjacentes :D
 						}
 					}
 				}

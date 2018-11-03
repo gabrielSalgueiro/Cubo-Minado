@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class RayCast : MonoBehaviour {
 
 	public LayerMask layer;
+	public Manager manger;
 
-	// Update is called once per frame
 	void Update () {
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -18,12 +18,11 @@ public class RayCast : MonoBehaviour {
 			hit.transform.gameObject.GetComponent<Caixa>().RequestRealce();
 
 			if (Input.GetMouseButtonUp(0)) {
-	            if(hit.transform.gameObject.GetComponent<Caixa>().GetMarcada() == 0)
+	            if(hit.transform.gameObject.GetComponent<Caixa>().marcada == 0)
 					hit.transform.gameObject.GetComponent<Caixa>().AbrirCaixa();
 			}
-		    else if (Input.GetMouseButtonUp(1)) {
+		    else if (Input.GetMouseButtonUp(1))
 		    	hit.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
-		    }
 		}
 	}
 }

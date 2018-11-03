@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour {
 	public static Vector3Int[] dimensaoDificuldade = {
-		new Vector3Int (3, 3, 3), // teste
+		new Vector3Int (3, 3, 3), // teste  (27)
 		new Vector3Int (5, 5, 5), // easy 	(125)
 		new Vector3Int (7, 7, 7), // medium (343)
 		new Vector3Int (10, 10, 10)	// hard	(1000)
@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour {
     public void GerarMatriz(int bombas) {
 		Vector3Int dim = cubo.dimensoes;
 		Vector3Int randPos;
-		for (int i = 0; i < bombas; ++i) {	// Coloca as n bombas na matriz
+		for (int i = 0; i < bombas; i++) {	// Coloca as n bombas na matriz
 			// Gera a posição aleatória onde a bomba será posicionada
 			randPos = new Vector3Int (Random.Range (0, dim.x), Random.Range (0, dim.y), Random.Range (0, dim.z));
 
@@ -46,7 +46,7 @@ public class Manager : MonoBehaviour {
 	}
 
     public void AbriuBomba() {
-
+		Debug.Log("KAbumm");
     }
    
     public void MarcouCaixa() {

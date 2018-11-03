@@ -271,6 +271,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1024
+  manger: {fileID: 679930047}
 --- !u!1 &679930046
 GameObject:
   m_ObjectHideFlags: 0
