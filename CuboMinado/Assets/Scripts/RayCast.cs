@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class RayCast : MonoBehaviour {
 
 	public LayerMask layer;
-	public Manager manger;
 
 	void Update () {
 		RaycastHit hit;

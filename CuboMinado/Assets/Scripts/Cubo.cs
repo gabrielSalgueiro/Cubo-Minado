@@ -9,20 +9,12 @@ public class Cubo : MonoBehaviour {
     public int nMinas { get; set; }
     public int nCaixasR { get; set; }
     public int nCaixasMarcadas { get; set; }
-    public float rotSpeed;
-    public float distanceBetweenTiles = 1.1f;
+    public float distanceBetweenTiles;
     public GameObject tilePrefab;
-    
-   
-
-	void Start () {
-	}
-	
-	void Update () {
-		Rotaciona();
-	}
 
     public void CriaCaixas() {
+        GetComponent<RotZoom>().SetPos(dimensoes, distanceBetweenTiles);
+        
         Vector3 init = -(dimensoes - new Vector3(1,1,1))*distanceBetweenTiles/2;
         Vector3 offset = init;
         
@@ -94,18 +86,6 @@ public class Cubo : MonoBehaviour {
 
     public void FirstClick() {
 
-    }
-
-    public void Rotaciona() {
-        if (Input.GetMouseButton(1)){
-			Vector2 rot = new Vector2(
-				Input.GetAxis("Mouse X") * rotSpeed,
-				Input.GetAxis("Mouse Y") * rotSpeed
-			);
-
-			transform.RotateAround(Vector3.down, rot.x);
-			transform.RotateAround(Vector3.right, rot.y);
-		}
     }
 
     public void RealceAdjascentes() {
