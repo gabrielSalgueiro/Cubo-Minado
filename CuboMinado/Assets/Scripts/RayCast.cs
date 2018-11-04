@@ -15,10 +15,10 @@ public class RayCast : MonoBehaviour {
 
 		//if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
 			if(Physics.Raycast(ray, out hit1, 10000, layer)) {
-				Debug.DrawLine(transform.positaion, hit1.point);
-				Debug.Log(hit1.point);
-			}
-				//hit1.transform.gameObject.GetComponent<Caixa>().RequestRealce();
+				Debug.DrawLine(transform.position, hit1.point);
+				//Debug.Log(hit1.point);
+			
+				hit1.transform.gameObject.GetComponent<Caixa>().RequestRealce();
 
 				if (Input.GetMouseButtonUp(0)) {
 					if(hit1.transform.gameObject.GetComponent<Caixa>().marcada == 0)
@@ -26,6 +26,6 @@ public class RayCast : MonoBehaviour {
 				}
 				else if (Input.GetMouseButtonUp(1))
 					hit1.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
-			//}
+			}
 	}
 }
