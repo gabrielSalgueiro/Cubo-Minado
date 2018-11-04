@@ -5,10 +5,12 @@ using UnityEngine;
 public class RotZoom : MonoBehaviour {
 
     public float rotSpeed, zoomSpeed;
-	private float initZoom;
+	private float minZoom, initZoom, maxZoom;
 	private Camera cam;
 	public void SetPos(Vector3 dimensoes, float distanceBetweenTiles){
+		minZoom = -dimensoes.z*distanceBetweenTiles*0.5f;
 		initZoom = -dimensoes.z*distanceBetweenTiles*1.5f;
+		maxZoom = -dimensoes.z*distanceBetweenTiles*2;
 		cam = Camera.main;
 		cam.transform.position = new Vector3(0, 0, initZoom);
 	}
@@ -40,6 +42,7 @@ public class RotZoom : MonoBehaviour {
 
 	private void Zoom(){
 		cam.transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel")*zoomSpeed);
+		cam.transform.position = new Vector3(0, 0, Mathf.Clamp(cam.transform.position.z, maxZoom, minZoom));
 	}
 
 
