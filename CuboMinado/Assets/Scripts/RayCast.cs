@@ -8,20 +8,24 @@ public class RayCast : MonoBehaviour {
 	public LayerMask layer;
 
 	void Update () {
-		RaycastHit hit;
+		RaycastHit hit1, hit2;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-		if(Physics.Raycast(ray, out hit, 10000, layer)) {
-			Debug.DrawLine(transform.position, hit.point);
+		//Camera.main.ViewportPointToRay(Input.mousePosition);
 
-			hit.transform.gameObject.GetComponent<Caixa>().RequestRealce();
-
-			if (Input.GetMouseButtonUp(0)) {
-	            if(hit.transform.gameObject.GetComponent<Caixa>().marcada == 0)
-					hit.transform.gameObject.GetComponent<Caixa>().AbrirCaixa();
+		//if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+			if(Physics.Raycast(ray, out hit1, 10000, layer)) {
+				Debug.DrawLine(transform.positaion, hit1.point);
+				Debug.Log(hit1.point);
 			}
-		    else if (Input.GetMouseButtonUp(1))
-		    	hit.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
-		}
+				//hit1.transform.gameObject.GetComponent<Caixa>().RequestRealce();
+
+				if (Input.GetMouseButtonUp(0)) {
+					if(hit1.transform.gameObject.GetComponent<Caixa>().marcada == 0)
+						hit1.transform.gameObject.GetComponent<Caixa>().AbrirCaixa();
+				}
+				else if (Input.GetMouseButtonUp(1))
+					hit1.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
+			//}
 	}
 }

@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour {
 		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
         cubo.dimensoes = dimensaoDificuldade [dificuldade];
 		cubo.CriaCaixas ();
+		cubo.nMinas = bombasDificuldade [dificuldade];
 		GerarMatriz (bombasDificuldade [dificuldade]);
 		cubo.ConfereMatriz();
 	}
@@ -53,4 +54,10 @@ public class Manager : MonoBehaviour {
 
     }
 
+	public void Vitoria() {
+		int caixasR = cubo.nCaixasRestantes;
+		if(caixasR == 0){
+			Debug.Log("É TRETAAA");
+		}
+	}
 }

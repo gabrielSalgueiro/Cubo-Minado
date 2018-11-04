@@ -7,10 +7,19 @@ public class Cubo : MonoBehaviour {
     public Vector3Int dimensoes;
     public Caixa[][][] matrizCaixas;
     public int nMinas { get; set; }
-    public int nCaixasR { get; set; }
+    public int nCaixasRestantes { get; set; }
     public int nCaixasMarcadas { get; set; }
     public float distanceBetweenTiles;
     public GameObject tilePrefab;
+
+	void Start () {
+        nCaixasMarcadas = 0;
+        nCaixasRestantes -= nMinas;
+	}
+	
+	void Update () {
+		Rotaciona();
+	}
 
     public void CriaCaixas() {
         GetComponent<RotZoom>().SetPos(dimensoes, distanceBetweenTiles);
@@ -18,6 +27,8 @@ public class Cubo : MonoBehaviour {
         Vector3 init = -(dimensoes - new Vector3(1,1,1))*distanceBetweenTiles/2;
         Vector3 offset = init;
         
+        nCaixasRestantes = dimensoes.x * dimensoes.y * dimensoes.z;
+
         matrizCaixas = new Caixa[dimensoes.x][][];
 
         for (int i = 0; i < dimensoes.x; i++) {
@@ -88,8 +99,31 @@ public class Cubo : MonoBehaviour {
 
     }
 
-    public void RealceAdjascentes() {
-        
+    public void Rotaciona() {
+        if (Input.GetMouseButton(1)){
+			Vector2 rot = new Vector2(
+				Input.GetAxis("Mouse X") * rotSpeed,
+				Input.GetAxis("Mouse Y") * rotSpeed
+			);
+
+			transform.RotateAround(Vector3.down, rot.x);
+			transform.RotateAround(Vector3.right, rot.y);
+		}
+    }
+
+    public void RealceAdjascentes(Vector3Int posicaoReferente) {
+        Vector3Int pos;
+		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
+			for (int j = -1; j < 2; ++j) {
+				for (int k = -1; k < 2; ++k) {
+                    pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+
+                    if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce();
+                    }
+                }
+            }
+        }
     }
 
     public void AbreAdjascentes() {

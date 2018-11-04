@@ -62,7 +62,7 @@
      <Compile Include="Assets\Scripts\NumberRot.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\RayCast.cs" />
-     <Compile Include="Assets\Scripts\RotZoom.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Giuliano/Documents/GitProjects/Cubo-Minado/CuboMinado/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

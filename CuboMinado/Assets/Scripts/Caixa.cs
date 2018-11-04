@@ -16,7 +16,7 @@ public class Caixa : MonoBehaviour {
 			isBomb = (value < 0) ? true: false;
 		}
 	}
-    private static Cubo cubo;
+    public static Cubo cubo;
     //[SerializeField]
     public static Manager manager;
     private int powerUp;
@@ -37,7 +37,11 @@ public class Caixa : MonoBehaviour {
         isBomb = false;
         if(manager == null){
             manager = GameObject.Find("Manager").GetComponent<Manager> ();
-            Debug.Log("FINDO");
+            Debug.Log("FINDO manager");
+        }
+        if(cubo == null){
+            cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
+            Debug.Log("FINDO cubo");
         }
     }
     
@@ -60,13 +64,18 @@ public class Caixa : MonoBehaviour {
         Debug.Log(_adjBomb + " " + isBomb);
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
+
         if(isBomb){
             Invoke("IXPRUDIU", .65f);
             manager.AbriuBomba();
         }
         else{
+            cubo.nCaixasRestantes--;
+
             aberta = true;
             gameObject.layer = 9;
+
+            manager.Vitoria();
         }
     }
 
@@ -74,10 +83,14 @@ public class Caixa : MonoBehaviour {
         if(marcada == 0) {
             marcada = 1;
             SMR.material = Marcada;
+            cubo.nCaixasMarcadas++;
+
+            manager.Vitoria();
         }
         else if(marcada == 1) {
             marcada = 0;
             SMR.material = Normal;
+            cubo.nCaixasMarcadas--;
         }
         
         if(!isBomb){
@@ -86,11 +99,11 @@ public class Caixa : MonoBehaviour {
     }
 
     public void RequestRealce() {
-
+        cubo.RealceAdjascentes(posicao);
     }
 
     public void SetRealce() {
-
+        //faz algo aqui
     }
 
     private void SUMIU(){
