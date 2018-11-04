@@ -45,5 +45,9 @@ public class RotZoom : MonoBehaviour {
 		cam.transform.position = new Vector3(0, 0, Mathf.Clamp(cam.transform.position.z, maxZoom, minZoom));
 	}
 
+	public void MinZoom(float minZoom){
+		this.minZoom = minZoom;
+	}
+
 
 }

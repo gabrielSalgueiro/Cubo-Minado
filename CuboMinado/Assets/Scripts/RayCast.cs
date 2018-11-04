@@ -34,5 +34,15 @@ public class RayCast : MonoBehaviour {
 						hit2.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
 				}
 			}
+
+		
+		RaycastHit hitZoom;
+		Ray rayZoom = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(Vector3.zero));
+
+		if (Physics.Raycast(rayZoom, out hitZoom, 100, layer)){
+			Debug.DrawLine(transform.position, hitZoom.point, Color.red);
+			hitZoom.transform.gameObject.GetComponentInParent<RotZoom>().MinZoom(hitZoom.point.z - 2);
+		}
+		
 	}
 }
