@@ -7,6 +7,11 @@ public class RayCast : MonoBehaviour {
 
 	public LayerMask layer;
 	RaycastHit hit1, hit2;
+	private Cubo cubo;
+
+	private void Start() {
+		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
+	}
 
 	void Update () {
 		
@@ -25,7 +30,7 @@ public class RayCast : MonoBehaviour {
 				
 				Vector3 distancia = hit1.point - hit2.point;
 
-				if(distancia.magnitude < 1.0f){
+				if(distancia.magnitude < .5f){
 					if (Input.GetMouseButtonUp(0)) {
 						if(hit2.transform.gameObject.GetComponent<Caixa>().marcada == 0)
 							hit2.transform.gameObject.GetComponent<Caixa>().AbrirCaixa();
@@ -33,6 +38,9 @@ public class RayCast : MonoBehaviour {
 					else if (Input.GetMouseButtonUp(1))
 						hit2.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
 				}
+			}
+			else {
+				cubo.RealceAdjascentes(new Vector3Int(100,100,100));
 			}
 
 		

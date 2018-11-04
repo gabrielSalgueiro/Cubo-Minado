@@ -11,10 +11,12 @@ public class Cubo : MonoBehaviour {
     public int nCaixasMarcadas { get; set; }
     public float distanceBetweenTiles;
     public GameObject tilePrefab;
+    private Vector3Int lastRealce;
 
 	void Start () {
         nCaixasMarcadas = 0;
         nCaixasRestantes -= nMinas;
+        lastRealce = Vector3Int.zero;
 	}
 	
     public void CriaCaixas() {
@@ -100,14 +102,28 @@ public class Cubo : MonoBehaviour {
 		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
 			for (int j = -1; j < 2; ++j) {
 				for (int k = -1; k < 2; ++k) {
-                    pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+                    pos = new Vector3Int (lastRealce.x + i, lastRealce.y + j, lastRealce.z + k);
 
                     if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
-                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce();
+                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(false);
                     }
                 }
             }
         }
+        
+		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
+			for (int j = -1; j < 2; ++j) {
+				for (int k = -1; k < 2; ++k) {
+                    pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+
+                    if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(true);
+                    }
+                }
+            }
+        }
+
+        lastRealce = posicaoReferente;
     }
 
     public void AbreAdjascentes() {

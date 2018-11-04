@@ -31,6 +31,7 @@ public class Caixa : MonoBehaviour {
     public List<Sprite> Numbers;
     private Image img;
     public Mina mina;
+    public GameObject Realce;
 
     void Awake () {
         bombasAdjacentes = 0;
@@ -56,9 +57,9 @@ public class Caixa : MonoBehaviour {
         img = GetComponentInChildren<Image>();
     }
 
-	void Update () {
-        
-	}
+    private void LateUpdate() {
+        Realce.SetActive(realce);
+    }
 
     public void AbrirCaixa() {
         Debug.Log(_adjBomb + " " + isBomb);
@@ -102,8 +103,8 @@ public class Caixa : MonoBehaviour {
         cubo.RealceAdjascentes(posicao);
     }
 
-    public void SetRealce() {
-        //faz algo aqui
+    public void SetRealce(bool real) {
+        realce = real;
     }
 
     private void SUMIU(){
