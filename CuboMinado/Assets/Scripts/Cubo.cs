@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cubo : MonoBehaviour {
 
@@ -12,12 +13,18 @@ public class Cubo : MonoBehaviour {
     public float distanceBetweenTiles;
     public GameObject tilePrefab;
     private Vector3Int lastRealce;
+    public Text nMinasRestantesText;
+	public Text nCaixasMarcadasText;
 
 	void Start () {
         nCaixasMarcadas = 0;
         nCaixasRestantes -= nMinas;
         lastRealce = Vector3Int.zero;
 	}
+
+    void Update() {
+        TextUI();
+    }
 	
     public void CriaCaixas() {
         GetComponent<RotZoom>().SetPos(dimensoes, distanceBetweenTiles);
@@ -134,4 +141,8 @@ public class Cubo : MonoBehaviour {
 
     }
 
+    public void TextUI() {
+        nMinasRestantesText.text = (nMinas - nCaixasMarcadas).ToString("00");
+        nCaixasMarcadasText.text = (nCaixasMarcadas).ToString("00");
+    }
 }

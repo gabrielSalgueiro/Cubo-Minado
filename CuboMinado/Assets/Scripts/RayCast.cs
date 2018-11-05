@@ -7,6 +7,7 @@ public class RayCast : MonoBehaviour {
 
 	public LayerMask layer;
 	RaycastHit hit1, hit2;
+	public Manager manager;
 	private Cubo cubo;
 
 	private void Start() {
@@ -19,11 +20,12 @@ public class RayCast : MonoBehaviour {
 
 		//Camera.main.ViewportPointToRay(Input.mousePosition);
 
-		if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-			if(Physics.Raycast(ray, out hit1, 10000, layer)) {
-				Debug.DrawLine(transform.position, hit1.point);
-				Debug.Log(hit1.point);
-			}
+		if(manager.jogando){
+			if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+				if(Physics.Raycast(ray, out hit1, 10000, layer)) {
+					Debug.DrawLine(transform.position, hit1.point);
+					Debug.Log(hit1.point);
+				}
 
 			if(Physics.Raycast(ray, out hit2, 10000, layer)) {
 				hit2.transform.gameObject.GetComponent<Caixa>().RequestRealce();
@@ -42,15 +44,14 @@ public class RayCast : MonoBehaviour {
 			else {
 				cubo.RealceAdjascentes(new Vector3Int(100,100,100));
 			}
-
+		}
 		
 		RaycastHit hitZoom;
 		Ray rayZoom = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(Vector3.zero));
 
 		if (Physics.Raycast(rayZoom, out hitZoom, 100, layer)){
 			Debug.DrawLine(transform.position, hitZoom.point, Color.red);
-			hitZoom.transform.gameObject.GetComponentInParent<RotZoom>().MinZoom(hitZoom.point.z - 2);
 		}
-		
+			hitZoom.transform.gameObject.GetComponentInParent<RotZoom>().MinZoom(hitZoom.point.z - 2);
 	}
 }

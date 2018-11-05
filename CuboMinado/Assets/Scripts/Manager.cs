@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
 	public static Vector3Int[] dimensaoDificuldade = {
@@ -9,11 +10,12 @@ public class Manager : MonoBehaviour {
 		new Vector3Int (7, 7, 7), // medium (343)
 		new Vector3Int (10, 10, 10)	// hard	(1000)
 	};
-	public static int[] bombasDificuldade = { 4, 30, 100, 275 };
+	public static int[] bombasDificuldade = { 3, 12, 34, 100 };
 	//private Vector3Int dimensaoCustom;
 
 	private Cubo cubo;
 	public int dificuldade;
+	public bool jogando { get; set; }
 
 
 	void Awake () {
@@ -23,6 +25,7 @@ public class Manager : MonoBehaviour {
 		cubo.nMinas = bombasDificuldade [dificuldade];
 		GerarMatriz (bombasDificuldade [dificuldade]);
 		cubo.ConfereMatriz();
+		jogando = true;
 	}
 	
 	void Update () {
@@ -47,7 +50,12 @@ public class Manager : MonoBehaviour {
 	}
 
     public void AbriuBomba() {
-		Debug.Log("KAbumm");
+		jogando = false;
+		Invoke("Derrota", 3f);
+	}
+
+	public void Derrota(){
+		SceneManager.LoadScene ("TelaDerrota");
     }
    
     public void MarcouCaixa() {
@@ -57,7 +65,8 @@ public class Manager : MonoBehaviour {
 	public void Vitoria() {
 		int caixasR = cubo.nCaixasRestantes;
 		if(caixasR == 0){
-			Debug.Log("É TRETAAA");
+			jogando = false;
+			SceneManager.LoadScene ("TelaVitoria");
 		}
 	}
 }
