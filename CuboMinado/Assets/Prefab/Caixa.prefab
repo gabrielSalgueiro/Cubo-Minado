@@ -189,7 +189,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 329724d33fa66eb4b8c1dc7b1f4ac276, type: 2}
+  - {fileID: 2100000, guid: 9def7a533b1ecbd40b2f76c759584191, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,6 +329,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa9d2a1c82f7f14ca2b8ef6dc3d800d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posicao: {x: 0, y: 0, z: 0}
+  bombasAdjacentes: 0
+  marcada: 0
+  aberta: 0
+  realce: 0
   Normal: {fileID: 2100000, guid: 0346011e7877b204098158bf126058dd, type: 2}
   Marcada: {fileID: 2100000, guid: 11c14c45218fb174185c68d94d595aff, type: 2}
   Sumida: {fileID: 2100000, guid: 820739bd427a531428144402d882880f, type: 2}

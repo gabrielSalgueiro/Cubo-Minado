@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour {
 		new Vector3Int (7, 7, 7), // medium (343)
 		new Vector3Int (10, 10, 10)	// hard	(1000)
 	};
-	public static int[] bombasDificuldade = { 3, 12, 34, 100 };
+	public static int[] bombasDificuldade = { 2, 7, 17, 50 };
 	//private Vector3Int dimensaoCustom;
 
 	private Cubo cubo;
@@ -24,7 +24,6 @@ public class Manager : MonoBehaviour {
 		cubo.CriaCaixas ();
 		cubo.nMinas = bombasDificuldade [dificuldade];
 		GerarMatriz (bombasDificuldade [dificuldade]);
-		cubo.ConfereMatriz();
 		jogando = true;
 	}
 	

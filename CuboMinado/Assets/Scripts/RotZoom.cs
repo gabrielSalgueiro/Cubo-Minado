@@ -42,7 +42,7 @@ public class RotZoom : MonoBehaviour {
 
 	private void Zoom(){
 		cam.transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel")*zoomSpeed);
-		cam.transform.position = new Vector3(0, 0, Mathf.Clamp(cam.transform.position.z, maxZoom, minZoom));
+		cam.transform.position = new Vector3(0, 0, Mathf.Clamp(cam.transform.position.z, maxZoom, Mathf.Min(0, minZoom)));
 	}
 
 	public void MinZoom(float minZoom){

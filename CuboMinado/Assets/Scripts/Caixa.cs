@@ -5,37 +5,25 @@ using UnityEngine.UI;
 
 public class Caixa : MonoBehaviour {
 
-    public Vector3Int posicao { get; set; }
-    private int _adjBomb;
-	public int bombasAdjacentes { 
-		get {
-			return _adjBomb;
-		}
-		set {
-			this._adjBomb = value;
-			isBomb = (value < 0) ? true: false;
-		}
-	}
+    public Vector3Int posicao;
+	public int bombasAdjacentes;
     public static Cubo cubo;
     //[SerializeField]
     public static Manager manager;
-    private int powerUp;
-    public int marcada { get; set; }
-	public bool aberta { get; set; }
-	public bool realce { get; set; }
-	public bool isBomb { get; private set; }
+    public int marcada;
+	public bool aberta;
+	public bool realce;
 
     public Material Normal, Marcada, Sumida;
     private Animator anim;
-    private SkinnedMeshRenderer SMR;
+    public SkinnedMeshRenderer SMR;
     public List<Sprite> Numbers;
-    private Image img;
+    public Image img;
     public Mina mina;
     public GameObject Realce;
 
     void Awake () {
         bombasAdjacentes = 0;
-        isBomb = false;
         if(manager == null){
             manager = GameObject.Find("Manager").GetComponent<Manager> ();
             Debug.Log("FINDO manager");
@@ -61,12 +49,15 @@ public class Caixa : MonoBehaviour {
         Realce.SetActive(realce);
     }
 
+    public bool IsBomb(){
+        return bombasAdjacentes < 0;
+    }
+
     public void AbrirCaixa() {
-        Debug.Log(_adjBomb + " " + isBomb);
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
 
-        if(isBomb){
+        if(IsBomb()){
             Invoke("IXPRUDIU", .65f);
             manager.AbriuBomba();
         }
@@ -78,6 +69,9 @@ public class Caixa : MonoBehaviour {
 
             manager.Vitoria();
         }
+
+        if (bombasAdjacentes == 0)
+            cubo.AbreAdjascentes(posicao);
     }
 
     public void MarcarCaixa() {
@@ -94,7 +88,7 @@ public class Caixa : MonoBehaviour {
             cubo.nCaixasMarcadas--;
         }
         
-        if(!isBomb){
+        if(!IsBomb()){
             manager.MarcouCaixa();
         }
     }
@@ -109,9 +103,12 @@ public class Caixa : MonoBehaviour {
 
     private void SUMIU(){
         SMR.material = Sumida;
-        if (!isBomb && _adjBomb > 0) {
-            img.sprite = Numbers[_adjBomb-1];
-            img.enabled = true;
+        if (bombasAdjacentes > 0) {
+            img.sprite = Numbers[bombasAdjacentes-1];
+            img.enabled = SMR.enabled;
+        }
+        else {
+            SMR.enabled = false;
         }
     }
 
