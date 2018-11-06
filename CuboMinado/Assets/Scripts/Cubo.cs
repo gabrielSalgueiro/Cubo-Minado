@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cubo : MonoBehaviour {
 
@@ -11,11 +12,20 @@ public class Cubo : MonoBehaviour {
     public int nCaixasMarcadas { get; set; }
     public float distanceBetweenTiles;
     public GameObject tilePrefab;
+    private Vector3Int lastRealce;
+    public Text nMinasRestantesText;
+	public Text nCaixasMarcadasText;
+    public PlanosDeCorte PDC;
 
 	void Start () {
         nCaixasMarcadas = 0;
         nCaixasRestantes -= nMinas;
+        lastRealce = Vector3Int.zero;
 	}
+
+    void Update() {
+        TextUI();
+    }
 	
     public void CriaCaixas() {
         GetComponent<RotZoom>().SetPos(dimensoes, distanceBetweenTiles);
@@ -47,6 +57,7 @@ public class Cubo : MonoBehaviour {
             offset.y = init.y;
             offset.x += distanceBetweenTiles;
         }
+        PDC.SetMatrizCaixas(ref matrizCaixas, dimensoes);
     }
 
     public void ConfereMatriz() {
@@ -78,7 +89,7 @@ public class Cubo : MonoBehaviour {
 					// Confere se a nova posição é válida, checando se está dentro das dimensões do cubo
 					if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
 						// Confere se a caixa não possui bomba, pois não faria sentido atualizar o valor de uma bomba, mas sim dos números
-						if (!matrizCaixas [pos.x] [pos.y] [pos.z].isBomb) {
+						if (!matrizCaixas [pos.x] [pos.y] [pos.z].IsBomb()) {
 							/*// Caso esteja diminuindo as bombas e o número de bombas desta caixa já seja zero, não diminui mais
 							if (n < 0 && matrizCaixas [pos.x] [pos.y] [pos.z].bombasAdjacentes <= 0)
 								continue;
@@ -141,22 +152,51 @@ public class Cubo : MonoBehaviour {
 		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
 			for (int j = -1; j < 2; ++j) {
 				for (int k = -1; k < 2; ++k) {
+                    pos = new Vector3Int (lastRealce.x + i, lastRealce.y + j, lastRealce.z + k);
+
+                    if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(false);
+                    }
+                }
+            }
+        }
+        
+		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
+			for (int j = -1; j < 2; ++j) {
+				for (int k = -1; k < 2; ++k) {
                     pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
 
                     if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
-                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce();
+                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(true);
+                    }
+                }
+            }
+        }
+
+        lastRealce = posicaoReferente;
+    }
+
+    public void AbreAdjascentes(Vector3Int posicaoReferente) {
+        for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
+			for (int j = -1; j < 2; ++j) {
+				for (int k = -1; k < 2; ++k) {
+                    Vector3Int pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+
+                    if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                        if (!matrizCaixas [pos.x] [pos.y] [pos.z].aberta)
+                            matrizCaixas [pos.x] [pos.y] [pos.z].AbrirCaixa();
                     }
                 }
             }
         }
     }
 
-    public void AbreAdjascentes() {
-
-    }
-
     public void ReduzCaixas() {
 
     }
 
+    public void TextUI() {
+        nMinasRestantesText.text = (nMinas - nCaixasMarcadas).ToString("00");
+        nCaixasMarcadasText.text = (nCaixasMarcadas).ToString("00");
+    }
 }
