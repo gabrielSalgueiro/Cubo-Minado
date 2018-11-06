@@ -28,7 +28,7 @@ public class RayCast : MonoBehaviour {
 				if(distancia.magnitude < 1.0f){
 					if (Input.GetMouseButtonUp(0)) {
 						if(hit2.transform.gameObject.GetComponent<Caixa>().marcada == 0)
-							hit2.transform.gameObject.GetComponent<Caixa>().AbrirCaixa();
+							hit2.transform.gameObject.GetComponent<Caixa>().AbrirCaixa(new Vector3Int(0, 0, 0));
 					}
 					else if (Input.GetMouseButtonUp(1))
 						hit2.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();

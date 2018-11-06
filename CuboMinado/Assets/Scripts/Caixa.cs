@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Caixa : MonoBehaviour {
 
+    [SerializeField] private int numero;
     public Vector3Int posicao { get; set; }
     private int _adjBomb;
 	public int bombasAdjacentes { 
@@ -14,6 +15,7 @@ public class Caixa : MonoBehaviour {
 		set {
 			this._adjBomb = value;
 			isBomb = (value < 0) ? true: false;
+            numero = value;
 		}
 	}
     public static Cubo cubo;
@@ -60,7 +62,7 @@ public class Caixa : MonoBehaviour {
         
 	}
 
-    public void AbrirCaixa() {
+    public void AbrirCaixa(Vector3Int imitandoFirstClick) {
         Debug.Log(_adjBomb + " " + isBomb);
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);

@@ -91,8 +91,49 @@ public class Cubo : MonoBehaviour {
 		}
     }
 
-    public void FirstClick() {
+    public void FirstClick(Vector3Int posicaoReferente) {
+        // Se a caixa for bomba
+        if (matrizCaixas [posicaoReferente.x] [posicaoReferente.y] [posicaoReferente.z].isBomb) {
+            Vector3Int pos;
+            int bombasAdj = 0;
 
+            // Conta quantas bombas estão adjacentes a esta caixa
+            for (int i = -1; i < 2; ++i) {			// vai de -1 a 1, percorrendo todos os adjacentes
+                for (int j = -1; j < 2; ++j) {
+                    for (int k = -1; k < 2; ++k) {
+                        pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+
+                        if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                            if (matrizCaixas [pos.x] [pos.y] [pos.z].isBomb)
+                                bombasAdj++;
+                        }
+                    }
+                }
+            }
+
+            // Marca a quantidade exata de bombas adjacentes a esta posição, já que ela não é mais uma bomba.
+            matrizCaixas [posicaoReferente.x] [posicaoReferente.y] [posicaoReferente.z].bombasAdjacentes = bombasAdj;
+            AtualizaAdjacentes(posicaoReferente, -1);   // Retira uma bomba do contador de todos as caixas adjacentes.
+
+            // Agora procura uma nova caixa sem bomba para mover essa antiga bomba.
+            for (int i = 0; i < dimensoes.x; i++) {
+                for(int j = 0; j < dimensoes.y; j++) {
+                    for(int k = 0; k < dimensoes.z; k++) {
+                        // Caso a nova posição escolhida não seja uma bomba
+                        if (!matrizCaixas[i][j][k].isBomb) {
+                            // E caso a nova posição não seja a mesma de antes
+                            if (i != posicaoReferente.x || j != posicaoReferente.y || k != posicaoReferente.z) {
+                                // Coloca uma bomba nesta posição...
+                                matrizCaixas[i][j][k].bombasAdjacentes = -1;
+                                // Atualiza o contador de bombas dos adjacentes...
+                                AtualizaAdjacentes(posicaoReferente, 1);
+                                return; // E encerra a função =)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void RealceAdjascentes(Vector3Int posicaoReferente) {
