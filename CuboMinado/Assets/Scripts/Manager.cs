@@ -65,7 +65,11 @@ public class Manager : MonoBehaviour {
 		int caixasR = cubo.nCaixasRestantes;
 		if(caixasR == 0){
 			jogando = false;
-			SceneManager.LoadScene ("TelaVitoria");
+			Invoke("TelaVitoria", 1f);
 		}
+	}
+
+	private void TelaVitoria(){
+		SceneManager.LoadScene ("TelaVitoria");
 	}
 }

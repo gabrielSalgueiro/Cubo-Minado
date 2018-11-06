@@ -51,7 +51,7 @@ public class RayCast : MonoBehaviour {
 
 		if (Physics.Raycast(rayZoom, out hitZoom, 100, layer)){
 			Debug.DrawLine(transform.position, hitZoom.point, Color.red);
-		}
 			hitZoom.transform.gameObject.GetComponentInParent<RotZoom>().MinZoom(hitZoom.point.z - 2);
+		}
 	}
 }
