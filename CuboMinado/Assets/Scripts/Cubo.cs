@@ -204,6 +204,5 @@ public class Cubo : MonoBehaviour {
 
     public void TextUI() {
         nMinasRestantesText.text = (nMinas - nCaixasMarcadas).ToString("00");
-        nCaixasMarcadasText.text = (nCaixasMarcadas).ToString("00");
     }
 }

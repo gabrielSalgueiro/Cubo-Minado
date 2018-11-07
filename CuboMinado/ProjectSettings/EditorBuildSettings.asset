@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TelaVitoria.unity
     guid: 386c88f5217748641adbc02215630e2b
+  - enabled: 1
+    path: Assets/Scenes/Dificuldade.unity
+    guid: 7472a56597c95824fb59c5230ed32ca4
+  - enabled: 1
+    path: Assets/Scenes/Rank.unity
+    guid: 7023621eb7baf1a4a8a05ff9e3e55f63
   m_configObjects: {}

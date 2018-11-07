@@ -8,7 +8,6 @@ public class Caixa : MonoBehaviour {
     public Vector3Int posicao;
 	public int bombasAdjacentes;
     public static Cubo cubo;
-    //[SerializeField]
     public static Manager manager;
     public int marcada;
 	public bool aberta;
