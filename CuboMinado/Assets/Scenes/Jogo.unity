@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4435805, g: 0.48643035, b: 0.5376303, a: 1}
+  m_IndirectSpecularColor: {r: 0.44358033, g: 0.48643047, b: 0.53763074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1216,8 +1216,8 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.47843137, g: 0.56078434, b: 0.6901961, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1494,16 +1494,16 @@ Camera:
   m_GameObject: {fileID: 734031878}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.4775276, g: 0.5596421, b: 0.6886792, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 20.78461
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.87
-    y: -0.63
+    x: 0.82
+    y: -0.7
     width: 1
     height: 1
   near clip plane: 0.3
@@ -1533,7 +1533,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 734031878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: -1, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2562,7 +2562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4727468998912008, guid: 511815dd47207184ba35c044b533a5d1, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4727468998912008, guid: 511815dd47207184ba35c044b533a5d1, type: 2}
       propertyPath: m_LocalRotation.x

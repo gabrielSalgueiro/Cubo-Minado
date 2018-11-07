@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33661200477439760}
   - component: {fileID: 23557387461559844}
   m_Layer: 11
-  m_Name: Cylinder.002
+  m_Name: YAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33377089029053028}
   - component: {fileID: 23530579585798796}
   m_Layer: 11
-  m_Name: Cylinder.001
+  m_Name: XAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 33943236152532294}
   - component: {fileID: 23937931598205498}
   m_Layer: 11
-  m_Name: Cylinder
+  m_Name: ZAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33997672838455642}
   - component: {fileID: 23397489130450528}
   m_Layer: 11
-  m_Name: Sphere
+  m_Name: Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,13 +100,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191490650206418}
-  m_LocalRotation: {x: 0.7071068, y: 0.7071067, z: 0.000000053385072, w: 0.000000053385083}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4727468998912008}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4516128908743248
 Transform:
   m_ObjectHideFlags: 1
@@ -118,7 +118,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4727468998912008}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4727468998912008
 Transform:
@@ -127,12 +127,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531033981238642}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.09939492, y: -0.09939504, z: -0.09939504}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: -0.15, y: 0.15, z: 0.15}
   m_Children:
-  - {fileID: 4912089742712404}
   - {fileID: 4516128908743248}
   - {fileID: 4492163429526676}
+  - {fileID: 4912089742712404}
   - {fileID: 4800316812622046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -161,7 +161,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4727468998912008}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23397489130450528
 MeshRenderer:

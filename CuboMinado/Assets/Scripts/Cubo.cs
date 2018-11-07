@@ -104,7 +104,7 @@ public class Cubo : MonoBehaviour {
 
     public void FirstClick(Vector3Int posicaoReferente) {
         // Se a caixa for bomba
-        if (matrizCaixas [posicaoReferente.x] [posicaoReferente.y] [posicaoReferente.z].isBomb) {
+        if (matrizCaixas [posicaoReferente.x] [posicaoReferente.y] [posicaoReferente.z].IsBomb()) {
             Vector3Int pos;
             int bombasAdj = 0;
 
@@ -115,7 +115,7 @@ public class Cubo : MonoBehaviour {
                         pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
 
                         if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
-                            if (matrizCaixas [pos.x] [pos.y] [pos.z].isBomb)
+                            if (matrizCaixas [pos.x] [pos.y] [pos.z].IsBomb())
                                 bombasAdj++;
                         }
                     }
@@ -131,7 +131,7 @@ public class Cubo : MonoBehaviour {
                 for(int j = 0; j < dimensoes.y; j++) {
                     for(int k = 0; k < dimensoes.z; k++) {
                         // Caso a nova posição escolhida não seja uma bomba
-                        if (!matrizCaixas[i][j][k].isBomb) {
+                        if (!matrizCaixas[i][j][k].IsBomb()) {
                             // E caso a nova posição não seja a mesma de antes
                             if (i != posicaoReferente.x || j != posicaoReferente.y || k != posicaoReferente.z) {
                                 // Coloca uma bomba nesta posição...
@@ -184,7 +184,7 @@ public class Cubo : MonoBehaviour {
 
                     if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
                         if (!matrizCaixas [pos.x] [pos.y] [pos.z].aberta)
-                            matrizCaixas [pos.x] [pos.y] [pos.z].AbrirCaixa();
+                            matrizCaixas [pos.x] [pos.y] [pos.z].AbrirCaixa(new Vector3Int(0,0,0));
                     }
                 }
             }
