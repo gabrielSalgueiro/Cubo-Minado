@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
 	public static Vector3Int[] dimensaoDificuldade = {
-		new Vector3Int (3, 3, 3), // teste  (27)
+		new Vector3Int (10, 4, 4), // teste  (27)
 		new Vector3Int (5, 5, 5), // easy 	(125)
 		new Vector3Int (7, 7, 7), // medium (343)
 		new Vector3Int (10, 10, 10)	// hard	(1000)
 	};
-	public static int[] bombasDificuldade = { 2, 7, 17, 50 };
-	//private Vector3Int dimensaoCustom;
-
+	public static int[] bombasDificuldade = { 0, 7, 17, 50 };
+	public Armazena armazena;
 	private Cubo cubo;
+	public TimeCount time;
 	public int dificuldade;
-	public bool jogando { get; set; }
+	public bool jogando;
+	public Button pause, play;
+	
 
 
 	void Awake () {
 		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
-        cubo.dimensoes = dimensaoDificuldade [dificuldade];
+        cubo.dimensoes = armazena.dimensoes;
 		cubo.CriaCaixas ();
-		cubo.nMinas = bombasDificuldade [dificuldade];
-		GerarMatriz (bombasDificuldade [dificuldade]);
+		cubo.nMinas = armazena.nMinas;
+		GerarMatriz (armazena.nMinas);
 		jogando = true;
 	}
 	
@@ -54,6 +57,7 @@ public class Manager : MonoBehaviour {
 	}
 
 	public void Derrota(){
+		armazena.tempo = time.theTime;
 		SceneManager.LoadScene ("TelaDerrota");
     }
    
@@ -70,6 +74,23 @@ public class Manager : MonoBehaviour {
 	}
 
 	private void TelaVitoria(){
+		armazena.tempo = time.theTime;
 		SceneManager.LoadScene ("TelaVitoria");
+	}
+
+	public void ClickPlay() {
+		pause.gameObject.SetActive(true);
+		play.gameObject.SetActive(false);
+        jogando = true;
+    }
+
+    public void ClickPause() {
+		play.gameObject.SetActive(true);
+		pause.gameObject.SetActive(false);
+        jogando = false;
+    }
+
+	public void ClickDesistir(){
+		Derrota();
 	}
 }
