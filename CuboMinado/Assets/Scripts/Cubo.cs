@@ -138,6 +138,7 @@ public class Cubo : MonoBehaviour {
                                 matrizCaixas[i][j][k].bombasAdjacentes = -1;
                                 // Atualiza o contador de bombas dos adjacentes...
                                 AtualizaAdjacentes(posicaoReferente, 1);
+                                RayCast.OnAbrir -= FirstClick;
                                 return; // E encerra a função =)
                             }
                         }
@@ -145,6 +146,12 @@ public class Cubo : MonoBehaviour {
                 }
             }
         }
+
+        RayCast.OnAbrir -= FirstClick;
+    }
+
+    public void OtherClicks(Vector3Int posicaoReferente) {
+        matrizCaixas[posicaoReferente.x][posicaoReferente.y][posicaoReferente.z].AbrirCaixa();
     }
 
     public void RealceAdjascentes(Vector3Int posicaoReferente) {
@@ -184,7 +191,7 @@ public class Cubo : MonoBehaviour {
 
                     if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
                         if (!matrizCaixas [pos.x] [pos.y] [pos.z].aberta)
-                            matrizCaixas [pos.x] [pos.y] [pos.z].AbrirCaixa(new Vector3Int(0,0,0));
+                            matrizCaixas [pos.x] [pos.y] [pos.z].AbrirCaixa();
                     }
                 }
             }

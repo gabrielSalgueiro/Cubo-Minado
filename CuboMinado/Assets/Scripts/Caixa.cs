@@ -53,7 +53,8 @@ public class Caixa : MonoBehaviour {
         return bombasAdjacentes < 0;
     }
 
-    public void AbrirCaixa(Vector3Int imitandoFirstClick) {
+    public void AbrirCaixa() {
+        Debug.Log("abrindo caixa "+ posicao + IsBomb());
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
 

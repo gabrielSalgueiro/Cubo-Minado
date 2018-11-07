@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class RayCast : MonoBehaviour {
 
+    public delegate void Abrir (Vector3Int pos);
+    public static event Abrir OnAbrir;
+
 	public LayerMask layer;
 	RaycastHit hit1, hit2;
 	public Manager manager;
@@ -12,6 +15,8 @@ public class RayCast : MonoBehaviour {
 
 	private void Start() {
 		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
+		OnAbrir = cubo.FirstClick;
+		OnAbrir += cubo.OtherClicks;
 	}
 
 	void Update () {
@@ -28,17 +33,18 @@ public class RayCast : MonoBehaviour {
 				}
 
 			if(Physics.Raycast(ray, out hit2, 10000, layer)) {
-				hit2.transform.gameObject.GetComponent<Caixa>().RequestRealce();
+				Caixa caixa = hit2.transform.gameObject.GetComponent<Caixa>();
+				caixa.RequestRealce();
 				
 				Vector3 distancia = hit1.point - hit2.point;
 
 				if(distancia.magnitude < .5f){
 					if (Input.GetMouseButtonUp(0)) {
 						if(hit2.transform.gameObject.GetComponent<Caixa>().marcada == 0)
-							hit2.transform.gameObject.GetComponent<Caixa>().AbrirCaixa(new Vector3Int(0, 0, 0));
+							OnAbrir(caixa.posicao);
 					}
 					else if (Input.GetMouseButtonUp(1))
-						hit2.transform.gameObject.GetComponent<Caixa>().MarcarCaixa();
+						caixa.MarcarCaixa();
 				}
 			}
 			else {
