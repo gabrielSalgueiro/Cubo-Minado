@@ -56,13 +56,11 @@ public class Caixa : MonoBehaviour {
     }
 
     public void AbrirCaixa() {
-        Debug.Log("abrindo caixa "+ posicao + IsBomb());
         anim.SetTrigger("AbreCaixa");
         Invoke("SUMIU", .65f);
 
         if(IsBomb()){
             Invoke("IXPRUDIU", .65f);
-            manager.AbriuBomba();
         }
         else{
             cubo.nCaixasRestantes--;
@@ -107,6 +105,11 @@ public class Caixa : MonoBehaviour {
         RMR.material = Realce1;
     }
 
+    public void MostraBomba(){
+        SUMIU();
+        mina.gameObject.SetActive(true);
+    }
+
     private void SUMIU(){
         SMR.material = Sumida;
         if (bombasAdjacentes > 0) {
@@ -120,5 +123,6 @@ public class Caixa : MonoBehaviour {
 
     private void IXPRUDIU(){
         mina.gameObject.SetActive(true);
+        manager.AbriuBomba();
     }
 }

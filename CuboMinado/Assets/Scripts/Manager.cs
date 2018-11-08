@@ -53,7 +53,16 @@ public class Manager : MonoBehaviour {
 
     public void AbriuBomba() {
 		jogando = false;
-		Invoke("Derrota", 3f);
+		for (int i = 0; i < cubo.dimensoes.x; i++) {
+                for(int j = 0; j < cubo.dimensoes.y; j++) {
+                    for(int k = 0; k < cubo.dimensoes.z; k++) {
+						var caixa = cubo.matrizCaixas[i][j][k];
+						if (caixa.IsBomb())
+							caixa.MostraBomba();
+					}
+				}
+		}
+		Invoke("Derrota", 2.5f);
 	}
 
 	public void Derrota(){
