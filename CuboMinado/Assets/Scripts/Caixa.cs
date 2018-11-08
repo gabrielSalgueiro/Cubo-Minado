@@ -66,7 +66,6 @@ public class Caixa : MonoBehaviour {
             cubo.nCaixasRestantes--;
 
             aberta = true;
-            gameObject.layer = 9;
 
             manager.Vitoria();
         }
@@ -112,6 +111,7 @@ public class Caixa : MonoBehaviour {
 
     private void SUMIU(){
         SMR.material = Sumida;
+        gameObject.layer = 9;
         if (bombasAdjacentes > 0) {
             img.sprite = Numbers[bombasAdjacentes-1];
             img.enabled = SMR.enabled;
