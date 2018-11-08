@@ -11,10 +11,9 @@ public class RayCast : MonoBehaviour {
 	public LayerMask layer;
 	RaycastHit hit1, hit2;
 	public Manager manager;
-	private Cubo cubo;
+	public Cubo cubo;
 
 	private void Start() {
-		cubo = GameObject.Find("Cubo").GetComponent<Cubo> ();
 		OnAbrir = cubo.FirstClick;
 		OnAbrir += cubo.OtherClicks;
 	}
@@ -22,8 +21,6 @@ public class RayCast : MonoBehaviour {
 	void Update () {
 		
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-		//Camera.main.ViewportPointToRay(Input.mousePosition);
 
 		if(manager.jogando){
 			if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
@@ -35,6 +32,7 @@ public class RayCast : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit2, 10000, layer)) {
 				Caixa caixa = hit2.transform.gameObject.GetComponent<Caixa>();
 				caixa.RequestRealce();
+				Debug.DrawLine(transform.position, hit2.point);
 				
 				Vector3 distancia = hit1.point - hit2.point;
 
