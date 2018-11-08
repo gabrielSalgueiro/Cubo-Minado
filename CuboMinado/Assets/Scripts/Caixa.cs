@@ -9,13 +9,15 @@ public class Caixa : MonoBehaviour {
 	public int bombasAdjacentes;
     public static Cubo cubo;
     public static Manager manager;
-    public int marcada;
+    public bool marcada;
 	public bool aberta;
 	public bool realce;
 
     public Material Normal, Marcada, Sumida;
+    public Material Realce1, Realce2;
     private Animator anim;
     public SkinnedMeshRenderer SMR;
+    private MeshRenderer RMR;
     public List<Sprite> Numbers;
     public Image img;
     public Mina mina;
@@ -35,12 +37,13 @@ public class Caixa : MonoBehaviour {
     
     
     void Start () {
-        marcada = 0;
+        marcada = false;
         aberta = false;
         realce = false;
         anim = GetComponent<Animator>();
         SMR = GetComponent<SkinnedMeshRenderer>();
         SMR.material = Normal;
+        RMR = Realce.GetComponent<MeshRenderer>();
         img = GetComponentInChildren<Image>();
     }
 
@@ -75,15 +78,15 @@ public class Caixa : MonoBehaviour {
     }
 
     public void MarcarCaixa() {
-        if(marcada == 0) {
-            marcada = 1;
+        if(marcada == false) {
+            marcada = true;
             SMR.material = Marcada;
             cubo.nCaixasMarcadas++;
 
             manager.Vitoria();
         }
-        else if(marcada == 1) {
-            marcada = 0;
+        else if(marcada == true) {
+            marcada = false;
             SMR.material = Normal;
             cubo.nCaixasMarcadas--;
         }
@@ -95,10 +98,13 @@ public class Caixa : MonoBehaviour {
 
     public void RequestRealce() {
         cubo.RealceAdjascentes(posicao);
+        realce = true;
+        RMR.material = Realce2;
     }
 
     public void SetRealce(bool real) {
         realce = real;
+        RMR.material = Realce1;
     }
 
     private void SUMIU(){

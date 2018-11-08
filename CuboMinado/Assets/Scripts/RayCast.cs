@@ -40,7 +40,7 @@ public class RayCast : MonoBehaviour {
 
 				if(distancia.magnitude < .5f){
 					if (Input.GetMouseButtonUp(0)) {
-						if(hit2.transform.gameObject.GetComponent<Caixa>().marcada == 0)
+						if(!hit2.transform.gameObject.GetComponent<Caixa>().marcada)
 							OnAbrir(caixa.posicao);
 					}
 					else if (Input.GetMouseButtonUp(1))

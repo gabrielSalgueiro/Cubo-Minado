@@ -8,9 +8,10 @@ public class RotZoom : MonoBehaviour {
 	private float minZoom, initZoom, maxZoom;
 	private Camera cam;
 	public void SetPos(Vector3 dimensoes, float distanceBetweenTiles){
-		minZoom = -dimensoes.z*distanceBetweenTiles*0.5f;
-		initZoom = -dimensoes.z*distanceBetweenTiles*1.5f;
-		maxZoom = -dimensoes.z*distanceBetweenTiles*2;
+		var val = Mathf.Max(Mathf.Max(dimensoes.x, dimensoes.y), dimensoes.z);
+		minZoom = -val*distanceBetweenTiles*0.5f;
+		initZoom = -val*distanceBetweenTiles*1.5f;
+		maxZoom = -val*distanceBetweenTiles*2;
 		cam = Camera.main;
 		cam.transform.position = new Vector3(0, 0, initZoom);
 	}

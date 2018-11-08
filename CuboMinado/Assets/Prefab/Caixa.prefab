@@ -337,6 +337,9 @@ MonoBehaviour:
   Normal: {fileID: 2100000, guid: 0346011e7877b204098158bf126058dd, type: 2}
   Marcada: {fileID: 2100000, guid: 11c14c45218fb174185c68d94d595aff, type: 2}
   Sumida: {fileID: 2100000, guid: 820739bd427a531428144402d882880f, type: 2}
+  Realce1: {fileID: 2100000, guid: 329724d33fa66eb4b8c1dc7b1f4ac276, type: 2}
+  Realce2: {fileID: 2100000, guid: 9def7a533b1ecbd40b2f76c759584191, type: 2}
+  SMR: {fileID: 0}
   Numbers:
   - {fileID: 21300000, guid: 0e658bbfe8961964d864524aae64d9b0, type: 3}
   - {fileID: 21300000, guid: f71f686565edcdc4b884fe4b957b9c19, type: 3}
@@ -364,6 +367,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ef3cbfef9612233488f918f11fe77f8b, type: 3}
   - {fileID: 21300000, guid: 1ea88a1b18418314caac9c6c6870aa12, type: 3}
   - {fileID: 21300000, guid: fb4601200256e3241857820f4177735f, type: 3}
+  img: {fileID: 0}
   mina: {fileID: 114085095598465810}
   Realce: {fileID: 1437154769001228}
 --- !u!114 &114855574972393098

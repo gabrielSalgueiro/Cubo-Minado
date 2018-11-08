@@ -171,10 +171,12 @@ public class Cubo : MonoBehaviour {
 		for (int i = -1; i < 2; ++i) {			// vai de -1 a 1
 			for (int j = -1; j < 2; ++j) {
 				for (int k = -1; k < 2; ++k) {
-                    pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
+                    if (!(i == 0 && j == 0 && k == 0)){                    
+                        pos = new Vector3Int (posicaoReferente.x + i, posicaoReferente.y + j, posicaoReferente.z + k);
 
-                    if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
-                        matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(true);
+                        if (pos.x >= 0 && pos.y >= 0 && pos.z >= 0 && pos.x < dimensoes.x && pos.y < dimensoes.y && pos.z < dimensoes.z) {
+                            matrizCaixas [pos.x] [pos.y] [pos.z].SetRealce(true);
+                        }
                     }
                 }
             }

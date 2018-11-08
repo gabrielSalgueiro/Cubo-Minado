@@ -100,10 +100,12 @@ public class PlanosDeCorte : MonoBehaviour {
 	}
 
 	private void EscondeCaixa(Caixa caixa){
-		caixa.SMR.enabled = false;
-		caixa.GetComponent<BoxCollider>().enabled = false;
-		caixa.Realce.GetComponent<MeshRenderer>().enabled = false;
-		caixa.img.enabled = false;
+		if (!caixa.marcada){
+			caixa.SMR.enabled = false;
+			caixa.GetComponent<BoxCollider>().enabled = false;
+			caixa.Realce.GetComponent<MeshRenderer>().enabled = false;
+			caixa.img.enabled = false;
+		}
 	}
 
 	private void MostraCaixa(Caixa caixa){
