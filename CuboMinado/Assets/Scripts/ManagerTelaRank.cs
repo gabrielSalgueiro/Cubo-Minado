@@ -8,6 +8,7 @@ public class ManagerTelaRank : MonoBehaviour {
 	public Armazena armazena;
 	public SaveSystem ss;
 	public Text titulo, tamanho, mina, seuTempo, melhorTempo;
+	public Menu menu;
 
 	void Start () {
 		if(armazena.venceu)
@@ -67,10 +68,6 @@ public class ManagerTelaRank : MonoBehaviour {
 
 	public void ClickMenu() {
 		SceneManager.LoadScene ("Menu");
-	}
-
-	public void ClickEscolherDificuldade() {
-		SceneManager.LoadScene ("Dificuldade");
 	}
 
 	public void ClickJogarNovamente() {
