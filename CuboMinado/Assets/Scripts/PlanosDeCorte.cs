@@ -119,4 +119,24 @@ public class PlanosDeCorte : MonoBehaviour {
 		}
 	}
 
+	public void EscondeTudo(){
+		for (int x = min.x; x < max.x; x++){
+			for (int y = min.y; y < max.y; y++){
+				for (int z = min.z; z < max.z; z++){
+					EscondeCaixa(matrizCaixas[x][y][z]);
+				}
+			}
+		}
+	}
+
+	public void Volta(){
+		for (int x = min.x; x < max.x; x++){
+			for (int y = min.y; y < max.y; y++){
+				for (int z = min.z; z < max.z; z++){
+					MostraCaixa(matrizCaixas[x][y][z]);
+				}
+			}
+		}
+	}
+
 }

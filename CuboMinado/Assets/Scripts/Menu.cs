@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour {
 	public GameObject menu;
 	public GameObject telaCreditos;
 	public GameObject telaInstrucoes;
+	public GameObject telaDificuldade;
 	public SaveSystem ss;
 
 	void Start() {
@@ -15,7 +16,9 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void Play() {
-		SceneManager.LoadScene ("Dificuldade");
+		//SceneManager.LoadScene ("Dificuldade");
+		telaDificuldade.SetActive(true);
+		menu.SetActive(false);
 	}
 
 	public void instrucoes() {

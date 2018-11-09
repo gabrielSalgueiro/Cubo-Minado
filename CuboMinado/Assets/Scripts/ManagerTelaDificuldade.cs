@@ -9,6 +9,7 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	public Slider eixoX, eixoY, eixoZ, nMinas;
 	public Text textEixoX, textEixoY, textEixoZ, textNMinas;
 	public int dificuldade;
+	public GameObject telaMenu, telaDificuldade;
 	
 	void Start() {
 		if(armazena.dificuldade == 0){
@@ -27,7 +28,7 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 	
 	void Update(){
-		nMinas.maxValue = (eixoX.value*eixoY.value*eixoZ.value) - 28;
+		nMinas.maxValue = (eixoX.value*eixoY.value*eixoZ.value) - 1;
 
 		textEixoX.text = eixoX.value.ToString();
 		textEixoY.text = eixoY.value.ToString();
@@ -100,6 +101,7 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 
 	public void Voltar() {
-		SceneManager.LoadScene ("Menu");
+		telaMenu.SetActive(true);
+		telaDificuldade.SetActive(false);
 	}
 }

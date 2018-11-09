@@ -17,7 +17,8 @@ public class Manager : MonoBehaviour {
 	public TimeCount time;
 	public int dificuldade;
 	public bool jogando;
-	public Button pause, play;
+	public GameObject TelaPause, BotaoPause;
+	public PlanosDeCorte PDC;
 	
 
 
@@ -90,15 +91,17 @@ public class Manager : MonoBehaviour {
 	}
 
 	public void ClickPlay() {
-		pause.gameObject.SetActive(true);
-		play.gameObject.SetActive(false);
         jogando = true;
+		PDC.Volta();
+		TelaPause.SetActive(false);
+		BotaoPause.SetActive(true);
     }
 
     public void ClickPause() {
-		play.gameObject.SetActive(true);
-		pause.gameObject.SetActive(false);
         jogando = false;
+		PDC.EscondeTudo();
+		TelaPause.SetActive(true);
+		BotaoPause.SetActive(false);
     }
 
 	public void ClickDesistir(){

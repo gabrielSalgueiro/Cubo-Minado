@@ -12,10 +12,28 @@ public class PlanoDeCorte : MonoBehaviour {
 	private PlanosDeCorte.Eixos eixo;
 
 	private int EV, DV;
+	public KeyCode minm, minM, maxm, maxM;
 
 	private void Update() {
+		Inputs();
+
 		Esq.onValueChanged.AddListener(delegate { MudouEsq(); });
 		Dir.onValueChanged.AddListener(delegate { MudouDir(); });
+	}
+
+	private void Inputs(){
+		if (Input.GetKeyDown(minm)){
+			Esq.value = Mathf.Max(0, Esq.value-1);
+		}
+		else if (Input.GetKeyDown(minM)){
+			Esq.value++;
+		}
+		else if (Input.GetKeyDown(maxm)){
+			Dir.value--;
+		}
+		else if (Input.GetKeyDown(maxM)){
+			Dir.value = Mathf.Min(Dir.maxValue, Dir.value+1);
+		}
 	}
 
 	private void MudouEsq(){

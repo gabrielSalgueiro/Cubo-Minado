@@ -24,10 +24,7 @@ public class RayCast : MonoBehaviour {
 
 		if(manager.jogando){
 			if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-				if(Physics.Raycast(ray, out hit1, 10000, layer)) {
-					Debug.DrawLine(transform.position, hit1.point);
-					Debug.Log(hit1.point);
-				}
+				if(Physics.Raycast(ray, out hit1, 10000, layer));
 
 			if(Physics.Raycast(ray, out hit2, 10000, layer)) {
 				Caixa caixa = hit2.transform.gameObject.GetComponent<Caixa>();

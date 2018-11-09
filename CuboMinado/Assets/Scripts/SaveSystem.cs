@@ -30,12 +30,21 @@ public class SaveSystem : MonoBehaviour {
 	}
 
 	public void Load() {
-		var serializedData = File.ReadAllText(
-			Application.persistentDataPath + '/' + this.filename);
-		var data = JsonUtility.FromJson<SaveData>(serializedData);
+		try {
+			var serializedData = File.ReadAllText(
+				Application.persistentDataPath + '/' + this.filename);
+			var data = JsonUtility.FromJson<SaveData>(serializedData);
 
-		armazena.facil = data.facil;
-		armazena.medio = data.medio;
-		armazena.dificil = data.dificil;
+			armazena.facil = data.facil;
+			armazena.medio = data.medio;
+			armazena.dificil = data.dificil;
+		}
+		catch (Exception e){
+			armazena.facil = float.MaxValue;
+			armazena.medio = float.MaxValue;
+			armazena.dificil = float.MaxValue;
+
+			Save();
+		}
 	}
 }

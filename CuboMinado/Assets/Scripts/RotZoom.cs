@@ -20,7 +20,7 @@ public class RotZoom : MonoBehaviour {
 		Rotaciona();
 		Zoom();
 
-		if (Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKeyDown(KeyCode.Y))
 			ResetRotation();
 	}
 
