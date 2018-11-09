@@ -6,5 +6,8 @@ using UnityEngine;
 public class Armazena : ScriptableObject {
 	public Vector3Int dimensoes;
 	public int nMinas;
+	public int dificuldade;
 	public float tempo;
+	public float facil, medio, dificil;
+	public bool venceu;
 }

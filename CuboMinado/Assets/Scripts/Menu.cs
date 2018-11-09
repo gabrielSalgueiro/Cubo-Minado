@@ -8,6 +8,11 @@ public class Menu : MonoBehaviour {
 	public GameObject menu;
 	public GameObject telaCreditos;
 	public GameObject telaInstrucoes;
+	public SaveSystem ss;
+
+	void Start() {
+		ss.Load();
+	}
 
 	public void Play() {
 		SceneManager.LoadScene ("Dificuldade");

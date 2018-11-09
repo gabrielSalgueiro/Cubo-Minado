@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb971a3bd9405224abe83cfca6c8019f, type: 3}
+  m_Name: Dados
+  m_EditorClassIdentifier: 
+  dimensoes: {x: 7, y: 7, z: 8}
+  nMinas: 15
+  dificuldade: 0
+  tempo: 2.6332052
+  facil: 1.45
+  medio: 0
+  dificil: 0
+  venceu: 0

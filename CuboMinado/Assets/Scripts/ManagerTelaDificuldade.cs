@@ -8,15 +8,22 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	public Armazena armazena;
 	public Slider eixoX, eixoY, eixoZ, nMinas;
 	public Text textEixoX, textEixoY, textEixoZ, textNMinas;
+	public int dificuldade;
 	
 	void Start() {
-		eixoX.minValue = 4;
-		eixoX.maxValue = 15;
-		eixoY.minValue = 4;
-		eixoY.maxValue = 15;
-		eixoZ.minValue = 4;
-		eixoZ.maxValue = 15;
-		nMinas.minValue = 4;
+		if(armazena.dificuldade == 0){
+			Customizar();
+			eixoX.value = armazena.dimensoes.x;
+			eixoY.value = armazena.dimensoes.y;
+			eixoZ.value = armazena.dimensoes.z;
+			nMinas.value = armazena.nMinas;
+		}
+		else if(armazena.dificuldade == 1)
+			Facil();
+		else if(armazena.dificuldade == 2)
+			Medio();
+		else
+			Dificil();
 	}
 	
 	void Update(){
@@ -29,6 +36,8 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 
 	public void Facil() {
+		dificuldade = 1;
+
 		eixoX.interactable = false;
 		eixoY.interactable = false;
 		eixoZ.interactable = false;
@@ -41,6 +50,8 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 
 	public void Medio() {
+		dificuldade = 2;
+
 		eixoX.interactable = false;
 		eixoY.interactable = false;
 		eixoZ.interactable = false;
@@ -53,6 +64,8 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 
 	public void Dificil() {
+		dificuldade = 3;
+
 		eixoX.interactable = false;
 		eixoY.interactable = false;
 		eixoZ.interactable = false;
@@ -65,6 +78,8 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 	}
 
 	public void Customizar() {
+		dificuldade = 0;
+
 		eixoX.interactable = true;
 		eixoY.interactable = true;
 		eixoZ.interactable = true;
@@ -79,6 +94,7 @@ public class ManagerTelaDificuldade : MonoBehaviour {
 
 		armazena.dimensoes = new Vector3Int(X, Y, Z);
 		armazena.nMinas = Minas;
+		armazena.dificuldade = dificuldade;
 
 		SceneManager.LoadScene ("Jogo");
 	}

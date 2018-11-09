@@ -67,6 +67,7 @@ public class Manager : MonoBehaviour {
 
 	public void Derrota(){
 		armazena.tempo = time.theTime;
+		armazena.venceu = false;
 		SceneManager.LoadScene ("TelaDerrota");
     }
    
@@ -84,6 +85,7 @@ public class Manager : MonoBehaviour {
 
 	private void TelaVitoria(){
 		armazena.tempo = time.theTime;
+		armazena.venceu = true;
 		SceneManager.LoadScene ("TelaVitoria");
 	}
 
