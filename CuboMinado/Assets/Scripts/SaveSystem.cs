@@ -40,9 +40,9 @@ public class SaveSystem : MonoBehaviour {
 			armazena.dificil = data.dificil;
 		}
 		catch (Exception e){
-			armazena.facil = float.MaxValue;
-			armazena.medio = float.MaxValue;
-			armazena.dificil = float.MaxValue;
+			armazena.facil = 12000;
+			armazena.medio = 12000;
+			armazena.dificil = 12000;
 
 			Save();
 		}

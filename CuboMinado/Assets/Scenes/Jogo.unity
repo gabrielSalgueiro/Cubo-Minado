@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4435805, g: 0.48643035, b: 0.5376303, a: 1}
+  m_IndirectSpecularColor: {r: 0.44358033, g: 0.48643047, b: 0.53763074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2483,8 +2483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facil: {fileID: 258952004}
-  medio: {fileID: 0}
-  dificil: {fileID: 0}
+  medio: {fileID: 1282485308}
+  dificil: {fileID: 1710328859}
   armazena: {fileID: 11400000, guid: f1f0110e0ad13fc45819ecd1e14778ef, type: 2}
 --- !u!4 &738025354
 Transform:

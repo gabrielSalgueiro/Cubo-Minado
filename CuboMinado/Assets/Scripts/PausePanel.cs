@@ -9,8 +9,15 @@ public class PausePanel : MonoBehaviour {
 	public Armazena armazena;
 
 	void Start () {
-		facil.text = armazena.facil.ToString();
-		medio.text = armazena.medio.ToString();
-		dificil.text = armazena.dificil.ToString();
+		facil.text = ToMinute(armazena.facil);
+		medio.text = ToMinute(armazena.medio);
+		dificil.text = ToMinute(armazena.dificil);
+	}
+
+	public string ToMinute(float time) {
+        string minutes = Mathf.Floor((time % 3600) / 60).ToString("00");
+        string seconds = (time % 60).ToString("00");
+
+		return minutes + ":" + seconds;
 	}
 }
