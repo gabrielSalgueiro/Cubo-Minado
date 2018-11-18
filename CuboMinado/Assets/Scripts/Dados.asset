@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb971a3bd9405224abe83cfca6c8019f, type: 3}
   m_Name: Dados
   m_EditorClassIdentifier: 
-  dimensoes: {x: 7, y: 7, z: 8}
-  nMinas: 15
-  dificuldade: 0
-  tempo: 2.6332052
-  facil: 1.45
-  medio: 0
-  dificil: 0
+  dimensoes: {x: 5, y: 5, z: 5}
+  nMinas: 6
+  dificuldade: 1
+  tempo: 186.88719
+  facil: 109.806725
+  medio: 3.4028235e+38
+  dificil: 3.4028235e+38
   venceu: 0

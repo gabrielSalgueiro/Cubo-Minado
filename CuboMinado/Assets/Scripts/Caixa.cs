@@ -75,21 +75,17 @@ public class Caixa : MonoBehaviour {
     }
 
     public void MarcarCaixa() {
-        if(marcada == false) {
+        if(marcada == false && (cubo.nMinas - cubo.nCaixasMarcadas) > 0) {
             marcada = true;
             SMR.material = Marcada;
             cubo.nCaixasMarcadas++;
 
-            manager.Vitoria();
+            manager.MarcouCaixa();
         }
         else if(marcada == true) {
             marcada = false;
             SMR.material = Normal;
             cubo.nCaixasMarcadas--;
-        }
-        
-        if(!IsBomb()){
-            manager.MarcouCaixa();
         }
     }
 
